@@ -1,0 +1,13 @@
+<div class="container">
+  <form class="inner-container">
+    <h1>
+      Create a new account
+    </h1>
+    <input [(ngModel)]="registerUserData.firstName" name="first-name" type="text" placeholder="First name">
+    <input [(ngModel)]="registerUserData.lastName" name="last-name" type="text" placeholder="Surname">
+    <input [(ngModel)]="registerUserData.email" name="email" type="text" placeholder="email">
+    <input [(ngModel)]="registerUserData.username" name="username" type="text" placeholder="login">
+    <input [(ngModel)]="registerUserData.password" name="password" type="password" placeholder="password">
+    <input type="button" (click)="registerUser()" class="btm btm-orange" value="Sign up">
+  </form>
+</div>

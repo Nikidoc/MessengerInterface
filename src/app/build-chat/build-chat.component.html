@@ -1,0 +1,58 @@
+<div class="container">
+
+  <div class="left-right left">
+    <div class="search">
+      <input id="search-line" type="text" class="input-text" placeholder="Enter login..." [(ngModel)]="loginForSearch" (ngModelChange)="searchUser()">
+      <input id="search-btn" type="button" class="btm btm-orange" value="Search" (click)="searchUser()">
+    </div>
+    <div class="researched-list">
+      <div class="found-user" *ngFor="let user of foundUsers" >
+        <div class="user-icon">
+          {{user.firstName.charAt(0)}}{{user.lastName.charAt(0)}}
+        </div>
+        <input type="text" class="login" value="{{user.username}}"  readonly>
+<!--          Login adsdsadasdas-->
+<!--        </h2>-->
+        <input type="text" class="firstname-surname" value="({{user.firstName}} {{user.lastName}})" readonly>
+<!--          (First name and surname) fdsfgsdgsgsdgsdgsdgsd sdg sdgsd gsd gsd-->
+<!--        </input>-->
+        <input type="button" class="btm btm-orange btm-add" value="+" (click)="addUser(user)">
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+  <div class="left-right right">
+    <div class="chatname-and-exit">
+      <input type="text" class="input-text" id="chatname-text" placeholder="Enter chatname..." [(ngModel)]="chatname" [disabled]="addedUsers.length < 2">
+      <input type="button" class="btm exit btm-orange" value="X" (click)="switchCreatingChat()">
+    </div>
+    <div class="added-users">
+      <div class="added-user" *ngFor="let user of addedUsers">
+        <div class="user-icon">
+          {{user.firstName.charAt(0)}}{{user.lastName.charAt(0)}}
+        </div>
+        <div class="user-information">
+          <input type="text" class="added-name" value="{{user.firstName}}" readonly>
+          <input type="text" class="added-name" value="{{user.lastName}}" readonly>
+
+
+        </div>
+        <input type="button" class="btm btm-blue btm-delete" value="-" (click)="remove(user)">
+      </div>
+
+
+
+
+    </div>
+    <input type="button" id="create-chat" class="btm btm-blue" value="Add chat" (click)="createChat()" [disabled]="addedUsers.length == 0">
+  </div>
+<!--  <input type="button" class="btm exit" value="X">-->
+
+</div>
+
+
+

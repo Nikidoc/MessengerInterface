@@ -1,0 +1,20 @@
+<div class="container">
+  <h1>
+    Welcome!
+  </h1>
+  <div class="event">
+    <div class="log-in left-right">
+
+      <form class="form">
+        <input [(ngModel)]="loginUserData.username" name="username" type="text" placeholder="login">
+        <input [(ngModel)]="loginUserData.password" name="password"type="password" placeholder="password">
+        <input type="button" (click)="loginUser()" class="btm btm-orange" value="Log In">
+      </form>
+
+    </div>
+    <div class="sign-up left-right">
+      <p>Create a new account</p>
+      <input type="button" (click)="navigateToRegister()" class="btm btm-blue" value="Sign Up">
+    </div>
+  </div>
+</div>

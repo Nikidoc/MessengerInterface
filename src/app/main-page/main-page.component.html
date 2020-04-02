@@ -1,0 +1,94 @@
+<div class="container" id="main-container" [class.background-blur]="isCreatingChat()">
+
+  <div class="left left-right">
+    <div class="logo" (click)="a()">
+      <img src="../../assets/img/logo.png" alt="logo" width="213" height="81">
+    </div>
+    <input id="btn-add-chat" type="button" (click)="switchCreatingChat()" class="btm btm-blue" value="Add chat">
+
+    <div class="chats">
+
+      <div class="chat btm" *ngFor="let chat of _messengerService.chats | async " (click)="swapChat(chat)">
+        <div class="user-icon">
+          {{chat | iconLabel}}
+        </div>
+        <div class="chat-information">
+          <input type="text" class="chat-name-list" value="{{chat.name}}" readonly>
+
+
+          <img src="../../assets/img/mail.png" class="new-message-icon" alt="new message">
+          <input type="text" class="last-message" value="{{chat.lastMessage == null ? '...' : chat.lastMessage.text}}"
+                 readonly disabled>
+        </div>
+      </div>
+
+
+    </div>
+
+
+  </div>
+
+  <div class="right left-right">
+
+    <div class="header">
+      <h1>
+        {{(_messengerService.user | async).firstName }} {{_messengerService.user.value.lastName}}
+      </h1>
+      <input type="button" (click)="logOut()" id="log-out" value="Log Out">
+    </div>
+    <div class="current-chat" *ngIf="(_messengerService.currentChat | async)?.id != null; else selectChat" >
+      <div class="chat-header">
+        <div class="chat-name">
+        <span class="chat-naming">
+          {{(_messengerService.currentChat | async)?.name}}
+        </span>
+          <span class="status" *ngIf="!(_messengerService.currentChat | async)?.group">
+          online
+        </span>
+        </div>
+        <div class="user-icon" id="icon-in-header">
+          {{_messengerService.currentChat | async | iconLabel}}
+        </div>
+      </div>
+      <div class="chat-display">
+        <div class="messages-container">
+          <div class="messages" #scrollMe [scrollTop]="scrollMe.scrollHeight">
+            <div class="message" *ngFor="let message of (_messengerService.currentChat | async)?.messages"
+                 [class.my-message]="isMyMessage(message)">
+              <h3>
+                {{message.author.firstName}} {{message.author.lastName}}
+              </h3>
+              <p>
+                {{message.text}}
+              </p>
+              <h3 class="date">
+                {{message.created | date:'MMM d, HH:mm'}}
+              </h3>
+            </div>
+          </div>
+        </div>
+        <div class="current-message enter" >
+          <textarea class="new-message" [(ngModel)]="newMessageText" placeholder="Enter text..." (keydown.control.enter)="sendMessage()" (blur)="setCurrentMessage(_messengerService.currentChat.getValue())"></textarea>
+          <button class="btm btm-orange btn-send" (click)="sendMessage()">
+            <div class="triangle">
+
+            </div>
+          </button>
+        </div>
+
+      </div>
+    </div>
+    <ng-template #selectChat>
+      <h1 class="select-chat">
+        Select any chat...
+      </h1>
+    </ng-template>
+
+
+  </div>
+
+</div>
+<div class="chat-creator">
+  <app-build-chat id="build-chat" *ngIf="isCreatingChat()"></app-build-chat>
+<!--  <input type="button" class="btm exit" value="X">-->
+</div>

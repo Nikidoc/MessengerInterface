@@ -1,0 +1,98 @@
+/* You can add global styles to this file, and also import other style files */
+
+:root{
+  --orange-color: #c26b00;
+  --blue-color: #002149;
+  --gray-color: #d0d0d0;
+  --border-radius: 10px;
+}
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  background: var(--blue-color);
+  /*display: flex;*/
+  /*justify-content: center;*/
+  /*align-items: center;*/
+  z-index:999;
+}
+
+a{
+  text-decoration: none;
+}
+
+.container{
+  max-width: 1200px;
+  margin: auto;
+  overflow: hidden;
+  background: #ffffff;
+  border-radius: var(--border-radius);
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+
+h1{
+  display: block;
+  text-align: center;
+  font-size: 60pt;
+  font-family: 'Lato', sans-serif;
+  margin: 70px 0 0 0;
+}
+
+
+.border-radius{
+  border-radius: 10px;
+}
+
+input, .message, .enter{
+  background: var(--gray-color);
+  border-radius: var(--border-radius);
+  border: none;
+  font-family: 'Roboto Slab', serif;
+  padding-left: 40px;
+  margin-bottom: 35px;
+  outline: none;
+}
+
+.btm{
+  font-family: 'Lato', sans-serif;
+  color: #ffffff;
+  padding: 0;
+  margin: 0;
+  transition: box-shadow 0.3s ease-out;
+  border: none;
+}
+.btm:focus{
+  outline: none;
+}
+
+.btm:hover{
+  cursor: pointer;
+}
+
+.btm-orange{
+  background: var(--orange-color);
+}
+
+.btm-orange:hover{
+  box-shadow: 0px 0px 20px 15px #ffa940 inset;
+}
+
+.btm-blue{
+  background: var(--blue-color);
+}
+
+.btm-blue:hover{
+  box-shadow: 0px 0px 20px 15px #0053b7 inset;
+}
+
+
+
+
